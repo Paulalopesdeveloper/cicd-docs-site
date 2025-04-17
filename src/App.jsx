@@ -14,22 +14,24 @@ import Guide from "./pages/Guide";
 export default function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex">
         <Navbar />
-        <main className="flex-grow p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/architecture" element={<Architecture />} />
-            <Route path="/crawler" element={<Crawler />} />
-            <Route path="/backend" element={<Backend />} />
-            <Route path="/frontend" element={<Frontend />} />
-            <Route path="/database" element={<Database />} />
-            <Route path="/cicd" element={<CICD />} />
-            <Route path="/guide" element={<Guide />} />
-          </Routes>
-        </main>
-        <Footer />
+        <div className="ml-64 flex flex-col min-h-screen w-full">
+          <main className="flex-grow p-8 bg-gray-50 text-gray-800">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/architecture" element={<Architecture />} />
+              <Route path="/crawler" element={<Crawler />} />
+              <Route path="/backend" element={<Backend />} />
+              <Route path="/frontend" element={<Frontend />} />
+              <Route path="/database" element={<Database />} />
+              <Route path="/cicd" element={<CICD />} />
+              <Route path="/guide" element={<Guide />} />
+            </Routes>
+          </main>
+        </div>
       </div>
+      <Footer />
     </Router>
   );
 }

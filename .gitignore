@@ -1,0 +1,9 @@
+# Ignorar dependências
+node_modules/
+
+# Output do Vite
+dist/
+
+# Outros
+.env
+.DS_Store
