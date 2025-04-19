@@ -22,14 +22,14 @@ export function Navbar() {
         <NavLink to="/structure" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Estrutura do Projeto
         </NavLink>
+        <NavLink to="/crawler" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
+          Crawler
+        </NavLink>
         <NavLink to="/backend" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Backend
         </NavLink>
         <NavLink to="/frontend" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Frontend
-        </NavLink>
-        <NavLink to="/crawler" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
-          Crawler
         </NavLink>
         <NavLink to="/database" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Base de Dados

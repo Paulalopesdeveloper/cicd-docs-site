@@ -30,9 +30,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Introduction />} />
                 <Route path="/structure" element={<Structure />} />
+                <Route path="/crawler" element={<Crawler />} />
                 <Route path="/backend" element={<Backend />} />
                 <Route path="/frontend" element={<Frontend />} />
-                <Route path="/crawler" element={<Crawler />} />
                 <Route path="/database" element={<Database />} />
                 <Route path="/environment" element={<Environment />} />
                 <Route path="/docker" element={<Docker />} />
