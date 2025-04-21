@@ -22,7 +22,7 @@ export default function Frontend() {
         {`frontend/src/
         ├── assets/          # Imagens e recursos visuais
         ├── components/      # Componentes reutilizáveis (cards, modals, filtros, etc.)
-        ├── context/         # Autenticação global (Keycloak)
+        ├── context/         # Estado global (ex: sessão do utilizador autenticado)
         ├── pages/           # Páginas da aplicação (ex: Home)
         ├── services/        # Comunicação com a API REST
         ├── App.jsx          # Componente principal com rotas, layout e autenticação
