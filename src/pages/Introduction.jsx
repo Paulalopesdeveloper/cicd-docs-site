@@ -8,7 +8,7 @@ export default function Introduction() {
       </p>
 
       <p className="mb-4">
-        Esta solução cobre todas as etapas de um pipeline moderno de desenvolvimento e entrega contínua, permitindo que os dados sejam tratados de forma automatizada desde a recolha até à sua disponibilização ao utilizador final.
+        Esta solução cobre todas as etapas de uma pipeline CI/CD, permitindo que os dados sejam tratados de forma automatizada desde a recolha até à sua disponibilização ao utilizador final.
       </p>
 
       <h3 className="text-xl font-semibold mt-6 mb-2">Principais Funcionalidades</h3>
