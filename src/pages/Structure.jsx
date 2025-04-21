@@ -12,19 +12,42 @@ export default function Structure() {
       </p>
 
       <p className="mb-4 font-semibold">Estrutura geral:</p>
-
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`pokecrawler-ai/
-├── backend/         # API REST com FastAPI
-├── frontend/        # Aplicação ReactJS
-├── crawler/         # Script Python que recolhe e insere dados da PokéAPI
-├── db/              # Script de inicialização da base de dados (PostgreSQL)
-├── ansible/         # Playbooks e inventário de deploy
-├── jenkins/         # Configurações de pipeline Jenkins
-├── docker-compose.yaml  # Orquestração dos serviços em containers
-├── Jenkinsfile      # Pipeline CI/CD
-└── .env.example     # Variáveis de ambiente (exemplo)`}
+        {`pokecrawler-ai/
+        ├── ansible/
+        │   ├── ansible.cfg
+        │   ├── deploy.yml
+        │   ├── inventory
+        │   ├── playbooks/
+        │   └── roles/
+        ├── backend/
+        │   ├── app/
+        │   ├── tests/
+        │   ├── Dockerfile
+        │   ├── requirements.txt
+        │   └── README.md
+        ├── crawler/
+        │   ├── crawler.py
+        │   ├── Dockerfile
+        │   └── requirements.txt
+        ├── frontend/
+        │   ├── src/
+        │   ├── public/
+        │   ├── node_modules/
+        │   ├── Dockerfile
+        │   ├── package.json
+        │   ├── package-lock.json
+        │   └── README.md
+        ├── jenkins/
+        │   ├── Dockerfile
+        │   ├── Dockerfile_arm
+        │   └── nohup.out
+        ├── Jenkinsfile
+        ├── docker-compose.yaml
+        ├── estrutura.txt
+        └── .env.example`}
       </pre>
+
 
       <p className="mb-4">
         A seguir, cada componente do projecto será descrito com mais detalhe nas suas respectivas páginas: <strong>Backend</strong>, <strong>Frontend</strong>, <strong>Crawler</strong>, <strong>Base de Dados</strong> e <strong>CI/CD</strong>.

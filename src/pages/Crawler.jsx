@@ -1,3 +1,4 @@
+
 export default function Crawler() {
   return (
     <div>
@@ -15,7 +16,7 @@ export default function Crawler() {
       <p className="font-semibold mb-2">⚙️ Fluxo de funcionamento:</p>
       <ol className="list-decimal pl-6 mb-6">
         <li>Recolha da lista de Pokémons</li>
-        <li>Requisição individual de cada Pokémon para obter detalhes</li>
+        <li>Request individual de cada Pokémon para obter detalhes</li>
         <li>Processamento e estruturação dos dados</li>
         <li>Inserção em batch na base de dados PostgreSQL</li>
       </ol>

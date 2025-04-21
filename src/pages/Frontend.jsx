@@ -1,10 +1,11 @@
+
 export default function Frontend() {
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Frontend (ReactJS)</h2>
+      <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Frontend (React)</h2>
 
       <p className="mb-4">
-        A interface do utilizador da aplicação <strong>PokéCrawler</strong> foi desenvolvida com <strong>ReactJS</strong>, criado um layout moderno, modular e responsivo.
+        A interface do utilizador da aplicação <strong>PokéCrawler</strong> foi desenvolvida com <strong>React</strong>, criado um layout moderno, modular e responsivo.
       </p>
 
       <p className="mb-4">
@@ -18,14 +19,14 @@ export default function Frontend() {
       <p className="font-semibold mb-2">📁 Estrutura de pastas:</p>
 
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`frontend/src/
-├── assets/          # Imagens e recursos visuais
-├── components/      # Componentes reutilizáveis (cards, modals, filtros, etc.)
-├── context/         # Autenticação global (Keycloak)
-├── pages/           # Páginas da aplicação (ex: Home)
-├── services/        # Comunicação com a API REST
-├── App.jsx          # Componente principal com rotas, layout e autenticação
-└── index.js         # Entrada da aplicação React`}
+        {`frontend/src/
+        ├── assets/          # Imagens e recursos visuais
+        ├── components/      # Componentes reutilizáveis (cards, modals, filtros, etc.)
+        ├── context/         # Autenticação global (Keycloak)
+        ├── pages/           # Páginas da aplicação (ex: Home)
+        ├── services/        # Comunicação com a API REST
+        ├── App.jsx          # Componente principal com rotas, layout e autenticação
+        └── index.js         # Entrada da aplicação React`}
       </pre>
 
       <p className="font-semibold mb-2">🧱 Componentes principais:</p>
@@ -33,6 +34,7 @@ export default function Frontend() {
         <li><code>PokemonCard</code> – Card com imagem, nome e tipos</li>
         <li><code>PokemonGrid</code> – Grid de visualização dos Pokémons</li>
         <li><code>Filters</code> – Filtros dinâmicos por tipo e nome</li>
+        <li><code>Contador</code> – Contagem do número de Pokémons ao filtrar por tipo</li>
         <li><code>PokemonModal</code> – Detalhes individuais do Pokémon</li>
         <li><code>AddPokemonModal</code> e <code>EditPokemonModal</code> – Criação e edição (restritas)</li>
         <li><code>LoginModal</code> – Autenticação via Keycloak</li>
@@ -45,7 +47,8 @@ export default function Frontend() {
 
       <p className="font-semibold mb-2">🧪 Desenvolvimento e Deploy:</p>
       <p className="mb-4">
-        A aplicação foi desenvolvida com <strong>Vite</strong> (ambiente leve e rápido), e está preparada para deployment via <code>Dockerfile</code>, facilitando integração no pipeline CI/CD.
+        A aplicação foi desenvolvida com <strong>React</strong> utilizando uma configuração via <code>Dockerfile</code>, preparada para integração no pipeline CI/CD. 
+        O ambiente inclui suporte a autenticação com Keycloak e consumo de API REST.
       </p>
 
       <p>

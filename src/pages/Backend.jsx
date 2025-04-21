@@ -1,3 +1,4 @@
+
 export default function Backend() {
   return (
     <div>
@@ -57,7 +58,7 @@ export default function Backend() {
 
       <p className="mb-4 font-semibold">📦 Docker:</p>
       <p className="mb-4">
-        O backend é totalmente contenerizado, com um <code>Dockerfile</code> próprio que instala dependências a partir de <code>requirements.txt</code> e expõe o serviço na porta <code>8000</code>.
+        O backend é totalmente baseado em containers, com um <code>Dockerfile</code> próprio que instala dependências a partir de <code>requirements.txt</code> e expõe o serviço na porta <code>8000</code>.
       </p>
 
       <p className="mb-4 font-semibold">📄 Documentação interativa:</p>

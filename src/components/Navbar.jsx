@@ -34,9 +34,6 @@ export function Navbar() {
         <NavLink to="/database" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Base de Dados
         </NavLink>
-        <NavLink to="/environment" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
-          Variáveis de Ambiente
-        </NavLink>
         <NavLink to="/docker" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Docker
         </NavLink>
@@ -49,8 +46,8 @@ export function Navbar() {
         <NavLink to="/keycloak" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Keycloak
         </NavLink>
-        <NavLink to="/execution" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
-          Execução
+        <NavLink to="/setup" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
+          Setup
         </NavLink>
         <NavLink to="/conclusion" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Conclusão
