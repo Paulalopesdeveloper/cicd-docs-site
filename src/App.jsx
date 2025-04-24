@@ -12,6 +12,7 @@ import Docker from './pages/Docker';
 import CICD from './pages/CICD';
 import Ansible from './pages/Ansible';
 import Keycloak from './pages/Keycloak';
+import Jenkins from './pages/Jenkins';
 import Setup from './pages/Setup';
 import Conclusion from './pages/Conclusion';
 
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/frontend" element={<Frontend />} />
                 <Route path="/docker" element={<Docker />} />
                 <Route path="/ci-cd" element={<CICD />} />
+                <Route path="/Jenkins" element={<Jenkins />} />
                 <Route path="/ansible" element={<Ansible />} />
                 <Route path="/keycloak" element={<Keycloak />} />
                 <Route path="/setup" element={<Setup />} />

@@ -40,6 +40,9 @@ export function Navbar() {
         <NavLink to="/ci-cd" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           CI/CD
         </NavLink>
+        <NavLink to="/jenkins" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
+          Jenkins
+        </NavLink>
         <NavLink to="/ansible" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Ansible
         </NavLink>
