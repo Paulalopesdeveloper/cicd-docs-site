@@ -19,20 +19,20 @@ export function Navbar() {
         >
           Introdução
         </NavLink>
-        <NavLink to="/structure" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
-          Estrutura do Projeto
+        <NavLink to="/architecture" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
+          Arquitetura
         </NavLink>
         <NavLink to="/crawler" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Crawler
+        </NavLink>
+        <NavLink to="/database" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
+          Base de Dados
         </NavLink>
         <NavLink to="/backend" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Backend
         </NavLink>
         <NavLink to="/frontend" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Frontend
-        </NavLink>
-        <NavLink to="/database" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
-          Base de Dados
         </NavLink>
         <NavLink to="/docker" className={({ isActive }) => isActive ? "text-pokeYellow font-semibold" : "hover:text-pokeYellow"}>
           Docker

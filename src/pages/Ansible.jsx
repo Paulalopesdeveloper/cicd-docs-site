@@ -1,75 +1,89 @@
-
 export default function Ansible() {
   return (
     <div>
       <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Orquestração com Ansible</h2>
 
       <p className="mb-4">
-        A orquestração e automatização do deploy dos serviços da aplicação <strong>PokéCrawler</strong> são realizadas com o <strong>Ansible</strong>. 
-        Esta abordagem permite provisionar o ambiente completo em servidores remotos de forma simples, repetível e controlada.
+        A orquestração e automação do ambiente da aplicação <strong>PokéCrawler</strong> é realizada com o <strong>Ansible</strong>, utilizando uma arquitetura modular baseada em <strong>roles</strong> reutilizáveis.
+        Este sistema permite instalar dependências, configurar serviços e iniciar os containers com um único comando.
       </p>
 
       <p className="mb-4">
-        O Ansible está configurado com <strong>roles modulares</strong> por serviço (backend, frontend, database, etc.) e utiliza um ficheiro de inventário que define os hosts de destino e variáveis específicas por ambiente.
+        A estrutura do Ansible está dividida em ficheiros de configuração, inventários, playbooks e roles, organizados para facilitar o deployment e a manutenção de cada componente da aplicação.
       </p>
 
-      <p className="font-semibold mb-2">📁 Estrutura de pastas:</p>
+      <h3 className="text-xl font-semibold mt-6 mb-2">📁 Estrutura de Pastas</h3>
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-        {`ansible/
-        ├── ansible.cfg
-        ├── inventory/
-        │   └── dev/
-        │       ├── hosts
-        │       └── group_vars/
-        ├── playbooks/
-        │   ├── backend.yml
-        │   ├── crawler.yml
-        │   ├── frontend.yml
-        │   ├── database.yml
-        │   ├── keycloak.yml
-        │   └── site.yml
-        └── roles/
-            ├── backend/
-            ├── crawler/
-            ├── frontend/
-            ├── database/
-            └── network/`}
+{`ansible/
+├── ansible.cfg
+├── inventory/
+│   └── dev/
+│       ├── hosts
+│       └── group_vars/
+│           ├── all.yml
+│           ├── backend.yml
+│           ├── crawler.yml
+│           ├── database.yml
+│           ├── frontend.yml
+│           ├── keycloak.yml
+│           └── ngrok.yml
+├── playbooks/
+│   ├── backend.yml
+│   ├── crawler.yml
+│   ├── database.yml
+│   ├── docker.yml
+│   ├── frontend.yml
+│   ├── keycloak.yml
+│   ├── ngrok.yml
+│   ├── setup.yml
+│   └── site.yml
+└── roles/
+    ├── backend/
+    ├── crawler/
+    ├── database/      # inclui init.sql
+    ├── docker/
+    ├── frontend/
+    ├── keycloak/
+    ├── network/
+    └── ngrok/`}
       </pre>
 
-      <p className="font-semibold mb-2">🧠 Funcionamento:</p>
+      <h3 className="text-xl font-semibold mb-2">🔁 Funcionamento por Camadas</h3>
       <ul className="list-disc pl-6 mb-6">
-        <li>Cada <strong>role</strong> contém tarefas específicas num ficheiro <code>tasks/main.yml</code></li>
-        <li>Variáveis são definidas em <code>group_vars</code> por serviço</li>
-        <li>O playbook <code>site.yml</code> orquestra todos os serviços na ordem correta</li>
+        <li><code>inventory/dev/group_vars</code>: define variáveis específicas por serviço (porta, imagem, etc.)</li>
+        <li><code>playbooks/*.yml</code>: scripts de execução para cada serviço</li>
+        <li><code>roles/</code>: conjunto de tarefas reutilizáveis por componente</li>
+        <li><code>setup.yml</code>: playbook que instala dependências (Docker, módulos, Ngrok)</li>
+        <li><code>docker.yml</code>: instala e ativa o Docker localmente</li>
+        <li><code>vault</code>: armazenamento seguro de tokens sensíveis (ex: Ngrok)</li>
       </ul>
 
-      <p className="font-semibold mb-2">🚀 Execução do Playbook:</p>
+      <h3 className="text-xl font-semibold mb-2">🚀 Executar Deploy Completo</h3>
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
 ansible-playbook -i ansible/inventory/dev/hosts ansible/playbooks/site.yml
       </pre>
 
       <p className="mb-4">
-        Este comando inicia os seguintes serviços em containers: PostgreSQL, Backend (FastAPI), Frontend (React), Crawler (Python) e Keycloak (autenticação).
+        Este comando orquestra o backend (FastAPI), frontend (React), crawler, base de dados (PostgreSQL) e Keycloak.
       </p>
 
-      <p className="font-semibold mb-2">✅ Verificação após execução:</p>
+      <h3 className="text-xl font-semibold mb-2">✅ Verificação</h3>
       <ul className="list-disc pl-6 mb-6">
-        <li><code>docker container ls</code> – Verifica se os serviços estão ativos</li>
-        <li><code>docker logs nome-do-container</code> – Verifica os logs</li>
-        <li>Frontend: <code>http://localhost:3000</code></li>
-        <li>API (Swagger): <code>http://localhost:8000/docs</code></li>
-        <li>Keycloak: <code>http://localhost:8180</code></li>
+        <li><code>docker ps</code> para ver os containers ativos</li>
+        <li><code>http://localhost:3000</code> para aceder ao frontend</li>
+        <li><code>http://localhost:8000/docs</code> para aceder à API</li>
+        <li><code>http://localhost:8180</code> para aceder ao Keycloak</li>
       </ul>
 
-      <p className="font-semibold mb-2">🐞 Problemas comuns:</p>
+      <h3 className="text-xl font-semibold mb-2">🐞 Dicas de Troubleshooting</h3>
       <ul className="list-disc pl-6 mb-6">
-        <li><strong>Portas ocupadas:</strong> verifica com <code>lsof -i :PORTA</code></li>
-        <li><strong>Erro no Keycloak:</strong> confirmar variáveis de ambiente</li>
-        <li><strong>Serviço não arranca:</strong> consultar logs ou dependências no playbook</li>
+        <li><strong>Porta ocupada:</strong> <code>lsof -i :PORT</code></li>
+        <li><strong>Erro de autenticação:</strong> verificar <code>keycloak.yml</code> ou token de Ngrok</li>
+        <li><strong>Serviço falha ao iniciar:</strong> verificar logs com <code>docker logs</code></li>
       </ul>
 
       <p>
-        O Ansible simplifica significativamente o processo de deploy, permitindo que qualquer pessoa execute o projeto completo com apenas um comando e obtenha um ambiente funcional e totalmente configurado.
+        Com esta abordagem modular, o deploy pode ser reproduzido em qualquer ambiente compatível com apenas um comando, garantindo consistência e reduzindo falhas operacionais.
       </p>
     </div>
   );

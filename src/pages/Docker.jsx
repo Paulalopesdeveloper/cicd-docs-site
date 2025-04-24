@@ -1,98 +1,42 @@
+
 export default function Docker() {
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Serviços Docker para Orquestração</h2>
+      <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Contenerização com Docker</h2>
 
       <p className="mb-4">
-        Todos os serviços que compõem a aplicação <strong>PokéCrawler</strong> foram preparados como containers Docker, utilizando <strong>Docker Compose</strong> para definir e estruturar os serviços de forma modular. 
+        A aplicação <strong>PokéCrawler</strong> é composta por múltiplos serviços (backend, frontend, crawler, base de dados e autenticação), e cada um é empacotado num <strong>container Docker</strong> para garantir isolamento, portabilidade e reprodutibilidade.
       </p>
 
       <p className="mb-4">
-        Estes containers são posteriormente orquestrados e lançados automaticamente através do <strong>Ansible</strong>, garantindo um processo de deployment simples e replicável.
+        Embora anteriormente tenha sido utilizado um ficheiro <code>docker-compose.yaml</code> para orquestração local, esta abordagem foi substituída por um sistema mais robusto com <strong>Ansible</strong>. O Ansible permite gerir todos os serviços de forma modular e remota, utilizando a coleção <code>community.docker</code> para criar, iniciar e configurar os containers.
       </p>
 
-      <p className="mb-4">
-        O ficheiro <code>docker-compose.yaml</code> define os seguintes serviços:
-      </p>
-
-      <ul className="list-disc pl-6 mb-6">
-        <li><strong>backend</strong> – API REST com FastAPI</li>
-        <li><strong>frontend</strong> – Interface web com React</li>
-        <li><strong>crawler</strong> – Script Python que recolhe dados da PokéAPI</li>
-        <li><strong>db</strong> – Base de dados PostgreSQL</li>
-        <li><strong>keycloak</strong> – Sistema de autenticação e gestão de utilizadores</li>
-      </ul>
-
-      <p className="font-semibold mb-2">📄 Exemplo de serviço no <code>docker-compose.yaml</code>:</p>
+      <h3 className="text-xl font-semibold mb-2">📦 Exemplo de Dockerfile (Backend)</h3>
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`backend:
-  build: ./backend
-  image: user/backend:latest
-  ports:
-    - "8000:8000"
-  depends_on:
-    - db
-  environment:
-    - DB_HOST=db
-    - DB_PORT=5432
-    - DB_USER=postgres
-    - DB_PASSWORD=postgres
-    - DB_NAME=pokecrawler`}
+        {`FROM python:3.11
+        WORKDIR /app
+        COPY . .
+        RUN pip install -r requirements.txt
+        CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]`}
       </pre>
 
       <p className="mb-4">
-        Cada serviço tem o seu próprio <code>Dockerfile</code> que define como a imagem é construída. Exemplo do Dockerfile do backend:
+        Cada serviço possui o seu próprio <code>Dockerfile</code> adaptado à stack tecnológica utilizada. Estes ficheiros são usados para construir as imagens Docker que são depois lançadas por Ansible ou Jenkins (via CI/CD).
       </p>
 
-      <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`FROM python:3.11
-WORKDIR /app
-COPY . .
-RUN pip install -r requirements.txt
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]`}
-      </pre>
-
-      <p className="font-semibold mb-2">📦 Volumes e persistência de dados:</p>
+      <h3 className="text-xl font-semibold mb-2">🔗 Comunicação entre containers</h3>
       <p className="mb-4">
-        O serviço da base de dados utiliza volumes Docker para garantir que os dados persistem mesmo após o container ser desligado:
+        Todos os containers comunicam entre si numa rede definida com o nome <code>pokecrawler_network</code>, onde os serviços são referenciados pelos seus aliases. Por exemplo, o backend pode aceder ao banco de dados usando <code>postgres</code> como hostname.
       </p>
 
-      <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`volumes:
-  postgres_data:
-    driver: local`}
-      </pre>
-
-      <p className="font-semibold mb-2">🔌 Comunicação entre containers:</p>
+      <h3 className="text-xl font-semibold mb-2">🗂️ Volumes e persistência</h3>
       <p className="mb-4">
-        Todos os serviços comunicam entre si usando os nomes dos containers como hosts (ex: <code>db</code> em vez de <code>localhost</code>). O Docker Compose cria automaticamente uma rede interna para isso.
+        A base de dados PostgreSQL utiliza volumes Docker para garantir que os dados persistem entre reinicializações. O ficheiro de inicialização <code>init.sql</code> é montado no container em <code>/docker-entrypoint-initdb.d</code> via Ansible.
       </p>
-
-      <p className="font-semibold mb-2">🚀 Comando principal de execução (local):</p>
-      <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`docker-compose up --build`}
-      </pre>
-
-      <p className="mb-4">
-        Este comando cria e inicia todos os serviços definidos no <code>docker-compose.yaml</code>. As aplicações ficam acessíveis através de:
-      </p>
-
-      <ul className="list-disc pl-6 mb-6">
-        <li><code>http://localhost:3000</code> – Frontend</li>
-        <li><code>http://localhost:8000</code> – API backend</li>
-        <li><code>http://localhost:8180</code> – Interface de administração do Keycloak</li>
-      </ul>
-
-      <p className="font-semibold mb-2">🛠️ Comandos úteis adicionais:</p>
-      <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-{`docker-compose ps             # Ver serviços em execução
-docker-compose logs -f         # Ver logs em tempo real
-docker-compose down            # Parar e remover os containers
-docker exec -it db psql -U postgres # Entrar no PostgreSQL`}
-      </pre>
 
       <p>
-        A utilização de Docker garante que todos os programadores e utilizadores do projeto têm o mesmo ambiente de execução, facilitando o desenvolvimento, testes, deploy e manutenção futura.
+        A utilização de <strong>containers Docker</strong> foi essencial para garantir um ambiente de desenvolvimento e produção idêntico, facilitando também o deploy contínuo automatizado via Jenkins.
       </p>
     </div>
   );

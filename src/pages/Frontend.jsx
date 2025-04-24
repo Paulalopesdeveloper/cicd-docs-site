@@ -5,7 +5,7 @@ export default function Frontend() {
       <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Frontend (React)</h2>
 
       <p className="mb-4">
-        A interface do utilizador da aplicação <strong>PokéCrawler</strong> foi desenvolvida com <strong>React</strong>, criado um layout moderno, modular e responsivo.
+        A interface do utilizador da aplicação <strong>PokéCrawler</strong> foi desenvolvida com <strong>React</strong>, com um layout moderno, modular e responsivo, adaptado a diferentes dispositivos.
       </p>
 
       <p className="mb-4">
@@ -13,20 +13,20 @@ export default function Frontend() {
       </p>
 
       <p className="mb-4">
-        A arquitectura é <strong>modular e escalável</strong>, facilitando a adição de novas páginas, funcionalidades ou componentes sem impacto na base existente.
+        A estrutura do código é <strong>modular e escalável</strong>, facilitando a adição de novas páginas, funcionalidades ou componentes sem impacto no restante sistema.
       </p>
 
       <p className="font-semibold mb-2">📁 Estrutura de pastas:</p>
 
       <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
-        {`frontend/src/
-        ├── assets/          # Imagens e recursos visuais
-        ├── components/      # Componentes reutilizáveis (cards, modals, filtros, etc.)
-        ├── context/         # Estado global (ex: sessão do utilizador autenticado)
-        ├── pages/           # Páginas da aplicação (ex: Home)
-        ├── services/        # Comunicação com a API REST
-        ├── App.jsx          # Componente principal com rotas, layout e autenticação
-        └── index.js         # Entrada da aplicação React`}
+{`frontend/src/
+├── assets/          # Imagens e recursos visuais
+├── components/      # Componentes reutilizáveis (cards, modals, filtros, etc.)
+├── context/         # Estado global (ex: sessão do utilizador autenticado)
+├── pages/           # Páginas da aplicação (ex: Home)
+├── services/        # Comunicação com a API REST
+├── App.jsx          # Componente principal com rotas, layout e autenticação
+└── index.js         # Entrada da aplicação React`}
       </pre>
 
       <p className="font-semibold mb-2">🧱 Componentes principais:</p>
@@ -42,17 +42,21 @@ export default function Frontend() {
 
       <p className="font-semibold mb-2">🔐 Autenticação com Keycloak:</p>
       <p className="mb-4">
-        A aplicação requer autenticação para as acções de <strong>edição e remoção de Pokémons</strong>. Utilizadores não autenticados têm acesso apenas de leitura. O estado da sessão é gerido por um <code>AuthProvider</code> React Context.
+        A aplicação requer autenticação para as ações de <strong>edição e remoção de Pokémons</strong>. Utilizadores não autenticados têm acesso apenas de leitura. O estado da sessão é gerido por um <code>AuthProvider</code> React Context.
       </p>
 
       <p className="font-semibold mb-2">🧪 Desenvolvimento e Deploy:</p>
       <p className="mb-4">
-        A aplicação foi desenvolvida com <strong>React</strong> utilizando uma configuração via <code>Dockerfile</code>, preparada para integração no pipeline CI/CD. 
+        O frontend é executado num <strong>container Docker</strong> criado a partir de um <code>Dockerfile</code>, o que garante um ambiente de execução consistente e facilmente integrável em pipelines CI/CD. 
         O ambiente inclui suporte a autenticação com Keycloak e consumo de API REST.
       </p>
 
       <p>
         O frontend foi desenhado para ser claro, eficiente e fácil de manter, com uma forte separação entre lógica, visual e comunicação com a API.
+      </p>
+
+      <p className="mt-4">
+        A interface foi construída com foco na <strong>experiência do utilizador</strong>, seguindo boas práticas de desenvolvimento frontend e integração contínua com o backend e sistemas de autenticação.
       </p>
     </div>
   );

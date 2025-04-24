@@ -53,7 +53,8 @@ export default function Backend() {
 
       <p className="mb-4 font-semibold">🔐 Autenticação:</p>
       <p className="mb-4">
-        A autenticação e configuração da aplicação estão no módulo <code>core/</code>. O backend foi preparado para validar tokens do Keycloak, permitindo protecção de endpoints se necessário.
+        A autenticação e configuração da aplicação estão no módulo <code>core/</code>. O backend foi estruturado com suporte à validação de tokens do <strong>Keycloak</strong>, através do módulo <code>core/auth.py</code>.
+        Embora a autenticação ainda não esteja ativada na versão atual, a infraestrutura está pronta para proteger os endpoints com OAuth2 e JWT, permitindo fácil ativação futura com base no fluxo de autenticação já implementado no frontend.
       </p>
 
       <p className="mb-4 font-semibold">📦 Docker:</p>
