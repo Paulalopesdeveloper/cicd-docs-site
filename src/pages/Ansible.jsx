@@ -54,7 +54,7 @@ export default function Ansible() {
         <li><code>playbooks/*.yml</code>: scripts de execução para cada serviço</li>
         <li><code>roles/</code>: conjunto de tarefas reutilizáveis por componente</li>
         <li><code>setup.yml</code>: playbook que instala dependências (Docker, módulos, Ngrok)</li>
-        <li><code>docker.yml</code>: instala e ativa o Docker localmente</li>
+        <li><code>docker.yml</code>: instala e inicia o Docker localmente</li>
         <li><code>vault</code>: armazenamento seguro de tokens sensíveis (ex: Ngrok)</li>
       </ul>
 
@@ -64,12 +64,12 @@ ansible-playbook -i ansible/inventory/dev/hosts ansible/playbooks/site.yml
       </pre>
 
       <p className="mb-4">
-        Este comando orquestra o backend (FastAPI), frontend (React), crawler, base de dados (PostgreSQL) e Keycloak.
+        Este comando instala e inicia por ordem, os container docker para cada um dos componentes: base de dados (PostgreSQL), Keycloak, crawler, backend (FastAPI) e frontend (React).
       </p>
 
       <h3 className="text-xl font-semibold mb-2">✅ Verificação</h3>
       <ul className="list-disc pl-6 mb-6">
-        <li><code>docker ps</code> para ver os containers ativos</li>
+        <li><code>docker container ls</code> para ver os containers ativos</li>
         <li><code>http://localhost:3000</code> para aceder ao frontend</li>
         <li><code>http://localhost:8000/docs</code> para aceder à API</li>
         <li><code>http://localhost:8180</code> para aceder ao Keycloak</li>

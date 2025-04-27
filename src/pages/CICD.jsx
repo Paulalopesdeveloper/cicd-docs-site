@@ -30,12 +30,12 @@ export default function CICD() {
 
       <p className="font-semibold mb-2">🚀 Fluxo da pipeline:</p>
       <ol className="list-decimal pl-6 mb-6">
-        <li>O Jenkins detecta alterações no repositório GitHub</li>
+        <li>O Jenkins recebe um webhook do Github quando há alterações no branch main</li>
         <li>Faz pull do código e executa o <code>Jenkinsfile</code></li>
         <li>Constrói as imagens Docker (frontend, backend, crawler)</li>
         <li>Faz push para o DockerHub com a tag especificada</li>
         <li>Executa o playbook do Ansible para fazer o deploy</li>
-        <li>Em caso de erro, envia email com detalhes do problema</li>
+        <li>E em caso de erro, envia email com detalhes do problema</li>
       </ol>
 
       <h3 className="text-xl font-semibold mb-2">🛠️ Jenkinsfile</h3>
@@ -113,7 +113,7 @@ ansible-playbook -i ansible/inventory/dev/hosts ansible/playbooks/site.yml
       </div>
 
       <p>
-        Esta integração total garante que qualquer <strong>push no repositório pode disparar automaticamente</strong> o ciclo completo de build → publicação → deploy, com feedback imediato via email em caso de falha.
+        Esta integração total garante que qualquer <strong>push no repositório pode disparar automaticamente</strong> o ciclo completo de build docker image → publish → deploy, com feedback imediato via email em caso de falha.
       </p>
     </div>
   );

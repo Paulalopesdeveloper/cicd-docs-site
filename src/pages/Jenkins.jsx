@@ -5,7 +5,7 @@ export default function Jenkins() {
         <h2 className="text-3xl font-bold mb-6 text-pokeYellow">Servidor de Integração Contínua (Jenkins)</h2>
   
         <p className="mb-4">
-          O <strong>Jenkins</strong> é o motor de automação da pipeline de integração contínua (CI/CD) da aplicação <strong>PokéCrawler</strong>. Ele é responsável por monitorizar o repositório GitHub, executar as etapas de build, fazer push das imagens Docker e acionar o deploy via Ansible.
+          O <strong>Jenkins</strong> é o motor de automação da pipeline de integração contínua (CI/CD) da aplicação <strong>PokéCrawler</strong>. Ele é responsável por executar a pipeline que faz build das imagens docker, push, e por último executar o Ansible playbook que irá realizar o deploy de todos os componentes da aplicação.
         </p>
   
         <h3 className="text-xl font-semibold mb-2">📦 Jenkins em container Docker</h3>
@@ -38,7 +38,7 @@ export default function Jenkins() {
         </pre>
   
         <p className="mb-4">
-          Para iniciar o container Jenkins, é utilizado o script <code>start_jenkins.sh</code> com os seguintes parâmetros:
+          Para iniciar o container Jenkins, é utilizado o script <code>start_jenkins.sh</code> que executa o seguinte comando:
         </p>
   
         <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-6">
